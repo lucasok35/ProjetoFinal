@@ -31,6 +31,8 @@
 	<div class="form-group">
 	    <label>CPF:</label>
     	<input type="text" id="cpf" class="form-control" name=cpf/><br>
+    	<input type="submit" class="btn btn-primary" value="Cadastrar"/><br>
+    	<br>
 
 	<div class="col-sm-3">
 <table class="table table-dark">

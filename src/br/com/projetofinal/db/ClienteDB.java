@@ -26,14 +26,15 @@ public class ClienteDB {
 			try {
 				
 				StringBuilder sb = new StringBuilder();
-				sb.append("insert into TB_CLIENTE (nome, cpf, telefone)");
+				sb.append("insert into tb_cliente (nome, telefone, cpf)");
 				sb.append("values (?, ?, ?)");
 				
 				ps = this.con.prepareStatement(sb.toString());
 				
 				ps.setString(1, cliente.getNome());
-				ps.setInt(2, cliente.getCpf());
-				ps.setString(3, cliente.getTelefone());
+				ps.setString(2, cliente.getTelefone());
+				ps.setString(3, cliente.getCpf());
+				
 				
 				ps.execute();
 				
@@ -51,7 +52,7 @@ public class ClienteDB {
 			
 			List<Cliente> lstCliente = new ArrayList<>();
 				
-			String sql = "SELECT id, nome, cpf, telefone FROM TB_CLIENTE";
+			String sql = "SELECT id, nome, telefone, cpf FROM tb_cliente";
 			
 			try {
 				ps = this.con.prepareStatement(sql);
@@ -64,9 +65,8 @@ public class ClienteDB {
 					
 					cliente.setId(rs.getInt("id"));
 					cliente.setNome(rs.getString("nome"));
-					cliente.setCpf(rs.getInt("cpf"));
 					cliente.setTelefone(rs.getString("telefone"));				
-					
+					cliente.setCpf(rs.getString("cpf"));
 					
 					lstCliente.add(cliente);
 				}

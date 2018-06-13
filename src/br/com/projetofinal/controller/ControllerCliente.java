@@ -28,20 +28,22 @@ public class ControllerCliente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String nome = request.getParameter("nome");
-		int cpf = Integer.parseInt(request.getParameter("cpf"));
 		String telefone = request.getParameter("telefone");
+		String cpf =request.getParameter("cpf");
+		
 		
 		Cliente c = new Cliente();
 		c.setNome(nome);
-		c.setCpf(cpf);
 		c.setTelefone(telefone);
+		c.setCpf(cpf);
+		
 		
 		if(new ClienteDB().insert(c)) {
 			request.setAttribute("msg", "Registro inserido com sucesso!");
-			request.getRequestDispatcher("CadastroAluno.jsp").forward(request, response);
+			request.getRequestDispatcher("CadastroCliente.jsp").forward(request, response);
 		}else{
 			request.setAttribute("msg", "Erro ao inserir registro!");
-			request.getRequestDispatcher("CadastroAluno.jsp").forward(request, response);
+			request.getRequestDispatcher("CadastroCliente.jsp").forward(request, response);
 		}
 		
 	}
